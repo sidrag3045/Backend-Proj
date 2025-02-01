@@ -4,6 +4,7 @@ const app = express();
 const PORT = config.PORT || 3000;
 const url = config.MONGODB_URI;
 const authRoutes = require('./routes/authRoutes');
+const eventRoutes = require('./routes/eventRoutes');
 
 
 config.connectToMongoDB(url).then(() => {
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/users', authRoutes);
+app.use('/events', eventRoutes);
 
 
 
